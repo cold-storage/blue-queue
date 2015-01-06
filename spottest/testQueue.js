@@ -10,12 +10,11 @@ lab.before(function(done) {
   qq = new QQ({
     dbUrl: 'postgres://qq:qq@localhost:5432/qq'
   });
-  qq.on('ready', function() {
-    done();
-  });
-  qq.on('error', function(err) {
-    done(err);
-  });
+  qq.testConnection()
+    .then(function() {
+      done();
+    })
+    .catch(done);
   qq.on('queueJobs', function(jobs) {
     console.log('jobs queued', jobs);
   });
@@ -30,7 +29,7 @@ lab.experiment('qq tests', function() {
       handler: function(job) {
         console.log('LOGGING YOUR JOB', job);
         var num = Math.floor(Math.random() * 3) + 1;
-        if (num === 3) {
+        if (true) {
           return Promise.reject(num);
         } else {
           return Promise.resolve(num);
@@ -51,7 +50,7 @@ lab.experiment('qq tests', function() {
 
     setTimeout(function() {
       done();
-    }, 1000);
+    }, 5000);
 
   });
 

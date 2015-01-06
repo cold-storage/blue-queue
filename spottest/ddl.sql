@@ -20,6 +20,7 @@ CREATE TABLE job (
   actual_run_time timestamp with time zone,
   end_time timestamp with time zone,
   run_count int not null default 0,
+  too_many_failures boolean not null default false,
   error boolean not null default false,
   result json,
   CONSTRAINT job_pkey PRIMARY KEY (uuid)
