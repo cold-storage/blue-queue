@@ -13,7 +13,7 @@ var cfg = {
       host: 'localhost',
       port: 5432
     },
-    stock: {
+    qq: {
       db: 'qq',
       role: 'qq',
       pw: 'qq',
@@ -24,6 +24,6 @@ var cfg = {
 };
 
 cfg.db.admin.url = buildUrl(cfg.db.admin);
-cfg.db.stock.url = buildUrl(cfg.db.stock);
+cfg.db.qq.url = buildUrl(cfg.db.qq);
 
 module.exports = cfg;
